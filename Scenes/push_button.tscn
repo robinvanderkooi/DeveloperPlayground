@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://b3a6fxhjj25m3"]
+
+[ext_resource type="Script" path="res://Scripts/Buttons/PushButton.gd" id="1_a3bgh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0ogjr"]
+size = Vector3(0.24, 0.133, 0.24)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4h76t"]
+albedo_color = Color(0.466667, 0.337255, 0.466667, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8crkx"]
+albedo_color = Color(0.941176, 0.737255, 0.305882, 1)
+
+[node name="PushButton" type="RigidBody3D"]
+freeze = true
+script = ExtResource("1_a3bgh")
+
+[node name="ButtonCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.133, 0)
+shape = SubResource("BoxShape3D_0ogjr")
+
+[node name="Base" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.068, 0)
+size = Vector3(0.4, 0.26, 0.4)
+material = SubResource("StandardMaterial3D_4h76t")
+
+[node name="Push" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.034, 0)
+size = Vector3(0.24, 0.26, 0.24)
+material = SubResource("StandardMaterial3D_8crkx")
