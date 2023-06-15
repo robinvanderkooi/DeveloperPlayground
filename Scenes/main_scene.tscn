@@ -1,10 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://dsd0hqxorje6m"]
+[gd_scene load_steps=14 format=3 uid="uid://dsd0hqxorje6m"]
 
 [ext_resource type="Script" path="res://Scripts/main_scene.gd" id="1_kiwil"]
 [ext_resource type="ArrayMesh" uid="uid://c5fsa3bra6quj" path="res://Blender/Pawn/Pawn.obj" id="1_onnlj"]
 [ext_resource type="Script" path="res://Scripts/CharacterBody3D.gd" id="2_v56id"]
 [ext_resource type="Script" path="res://Scripts/Camera3D.gd" id="4_bsw6s"]
 [ext_resource type="PackedScene" uid="uid://b3a6fxhjj25m3" path="res://Scenes/push_button.tscn" id="5_2jkuc"]
+[ext_resource type="ArrayMesh" uid="uid://bpbl8kitduhnm" path="res://Blender/rock.obj" id="6_8xj7s"]
+[ext_resource type="Script" path="res://Scenes/PointHoldingCell.gd" id="7_ec37o"]
+[ext_resource type="PackedScene" uid="uid://s8h75ofqu5b0" path="res://Scenes/static_contruction_box.tscn" id="7_q34ie"]
+[ext_resource type="PackedScene" uid="uid://dvuinyvvieoqy" path="res://Scenes/repulsion_point.tscn" id="9_cmswh"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_by3cj"]
 height = 1.3
@@ -14,6 +18,8 @@ size = Vector3(33, 1, 33)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8htvv"]
 albedo_color = Color(0.45098, 0.505882, 0.564706, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yqnac"]
 
 [node name="MainScene" type="Node3D"]
 script = ExtResource("1_kiwil")
@@ -46,6 +52,13 @@ script = ExtResource("4_bsw6s")
 [node name="Label" type="Label" parent="CanvasLayer"]
 offset_right = 40.0
 offset_bottom = 23.0
+text = "Hello"
+
+[node name="Label_MapMode" type="Label" parent="CanvasLayer"]
+offset_left = 1.0
+offset_top = 25.0
+offset_right = 41.0
+offset_bottom = 51.0
 text = "Hello"
 
 [node name="Crosshair" type="Control" parent="CanvasLayer"]
@@ -114,3 +127,42 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.55926, 1.59723, -0.394702)
 
 [node name="PushButton3" parent="World/Buttons" instance=ExtResource("5_2jkuc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.215079, 0.652896, 1.62115)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.44489, 1.35178, 0)
+
+[node name="Rock" type="MeshInstance3D" parent="World/RigidBody3D"]
+mesh = ExtResource("6_8xj7s")
+skeleton = NodePath("../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/RigidBody3D"]
+shape = SubResource("BoxShape3D_yqnac")
+
+[node name="PointHoldingCell" type="Node3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.051, 2.01114, 7.18686)
+script = ExtResource("7_ec37o")
+
+[node name="StaticContructionBox" parent="World/PointHoldingCell" instance=ExtResource("7_q34ie")]
+transform = Transform3D(3, 0, 0, 0, 0.2, 0, 0, 0, 3, 0, 1.5, 0)
+
+[node name="StaticContructionBox2" parent="World/PointHoldingCell" instance=ExtResource("7_q34ie")]
+transform = Transform3D(3, 0, 0, 0, 0.2, 0, 0, 0, 3, 0, -1.5, 0)
+
+[node name="StaticContructionBox3" parent="World/PointHoldingCell" instance=ExtResource("7_q34ie")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 0.2, 0, 0, 1.5)
+
+[node name="StaticContructionBox4" parent="World/PointHoldingCell" instance=ExtResource("7_q34ie")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 0.2, 0, 0, -1.5)
+
+[node name="StaticContructionBox5" parent="World/PointHoldingCell" instance=ExtResource("7_q34ie")]
+transform = Transform3D(0.2, 0, 0, 0, 3, 0, 0, 0, 3, 1.5, 0, 0)
+
+[node name="StaticContructionBox6" parent="World/PointHoldingCell" instance=ExtResource("7_q34ie")]
+transform = Transform3D(0.2, 0, 0, 0, 3, 0, 0, 0, 3, -1.5, 0, 0)
+
+[node name="PushButton" parent="World/PointHoldingCell" instance=ExtResource("5_2jkuc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.783441, -1.6893)
+
+[node name="Points" type="Node3D" parent="World/PointHoldingCell"]
+
+[node name="ReplusionPoint" parent="World/PointHoldingCell/Points" instance=ExtResource("9_cmswh")]

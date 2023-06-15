@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://s8h75ofqu5b0"]
+
+[ext_resource type="Texture2D" uid="uid://blrg43v6rr077" path="res://Textures/ConstructionPaintJob.png" id="1_80bmb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pteaw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ufc0s"]
+albedo_texture = ExtResource("1_80bmb")
+
+[node name="StaticContructionBox" type="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.52098, 1.92046, -2.35517)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_pteaw")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+material_override = SubResource("StandardMaterial3D_ufc0s")
+transparency = 0.7
+cast_shadow = 0

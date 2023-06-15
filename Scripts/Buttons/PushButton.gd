@@ -26,4 +26,7 @@ func _process(delta):
 func PushMe():
 	push_node.material = red_material
 	pushed_countDown = .5
+	var pushyParent = get_parent_node_3d()
+	if pushyParent.has_method("PushButtonFunction"):
+		pushyParent.PushButtonFunction()
 	

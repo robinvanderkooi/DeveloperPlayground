@@ -1,7 +1,7 @@
 extends Camera3D
 
 
-@export var lerp_speed = 3
+@export var lerp_speed = 10
 @export var target_path : NodePath = "../CharacterBody3D/Head"
 @export var offset = Vector3.BACK + Vector3.UP
 

@@ -2,11 +2,28 @@
 
 A third person open world adventure.
 
-Button.
- Shapes.
-  Materials and/or colors.
-  Actions.
-   Function Layer. Only call another to modify their own things.
+~Button.
+ ~Shapes.
+  ~Materials and/or colors.
+  ~Actions.
+   ~Function Layer. Only call another to modify their own things.
 
-Save it to GIT
+~Save it to GIT
 
+3 button puzzle.
+ A place for 3 buttons. Like a door to open. Door puzzle.
+  A door.
+   Circular door hole.
+   Door Frame
+   Pullze Pieces
+
+Monthly subcription to a box of delicious smelling soaps.
+
+Perhaps we can make a make without leaving Godot?
+Wall
+ Door
+  3 Cubes
+
+Strechyness could make all the difference. And lighting.
+
+Map mode

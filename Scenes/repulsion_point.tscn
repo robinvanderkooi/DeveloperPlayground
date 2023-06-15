@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvuinyvvieoqy"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_axmlp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6jmtd"]
+albedo_color = Color(0.576471, 0.647059, 0.976471, 1)
+metallic = 0.14
+
+[node name="ReplusionPoint" type="RigidBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_axmlp")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+material = SubResource("StandardMaterial3D_6jmtd")
