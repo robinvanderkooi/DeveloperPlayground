@@ -26,6 +26,12 @@ func _physics_process(delta):
 	velocity.z = movement_dir.z * speed
 
 	move_and_slide()
+	for col_idx in get_slide_collision_count():
+		var col := get_slide_collision(col_idx)
+		if col.get_collider() is RigidBody3D:
+			col.get_collider().apply_central_impulse(-col.get_normal() * 0.3)
+			col.get_collider().apply_impulse(-col.get_normal() * 0.01, col.get_position())
+
 	if is_on_floor() and Input.is_action_just_pressed("jump"):
 		velocity.y = jump_speed
 
@@ -34,7 +40,13 @@ func _input(event):
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		rotate_y(-event.relative.x * mouse_sensitivity)
 		target_node.rotate_x(-event.relative.y * mouse_sensitivity)
-		target_node.rotation.x = clampf(target_node.rotation.x, -deg_to_rad(40), deg_to_rad(100))
+		if camera_node.cam_mode == 0: # First
+			target_node.rotation.x = clampf(target_node.rotation.x, -1.45, 1.50)
+			print(target_node.rotation.x)
+			pass
+			#target_node.rotation.x = clampf(target_node.rotation.x, -deg_to_rad(60), deg_to_rad(120))
+		if camera_node.cam_mode == 1: # Shoulder
+			target_node.rotation.x = clampf(target_node.rotation.x, -deg_to_rad(40), deg_to_rad(100))
 	if event.is_action_pressed("Shoot"):
 		shoot()
 

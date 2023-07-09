@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dsd0hqxorje6m"]
+[gd_scene load_steps=17 format=3 uid="uid://dsd0hqxorje6m"]
 
 [ext_resource type="Script" path="res://Scripts/main_scene.gd" id="1_kiwil"]
 [ext_resource type="ArrayMesh" uid="uid://c5fsa3bra6quj" path="res://Blender/Pawn/Pawn.obj" id="1_onnlj"]
@@ -20,6 +20,21 @@ size = Vector3(33, 1, 33)
 albedo_color = Color(0.45098, 0.505882, 0.564706, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yqnac"]
+size = Vector3(1.3, 1.3, 1.4)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_2fc2v"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_sh5bm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t61vt"]
+normal_enabled = true
+rim_enabled = true
+rim = 0.07
+rim_tint = 0.53
+rim_texture = SubResource("ImageTexture_sh5bm")
+subsurf_scatter_enabled = true
+subsurf_scatter_strength = 0.33
+refraction_enabled = true
 
 [node name="MainScene" type="Node3D"]
 script = ExtResource("1_kiwil")
@@ -30,6 +45,9 @@ script = ExtResource("2_v56id")
 
 [node name="Head" type="Node3D" parent="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="LookPoint" type="Node3D" parent="CharacterBody3D/Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
 
 [node name="Pawn" type="MeshInstance3D" parent="CharacterBody3D"]
 mesh = ExtResource("1_onnlj")
@@ -59,7 +77,6 @@ offset_left = 1.0
 offset_top = 25.0
 offset_right = 41.0
 offset_bottom = 51.0
-text = "Hello"
 
 [node name="Crosshair" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -117,25 +134,25 @@ shape = SubResource("BoxShape3D_pq5fh")
 size = Vector3(33, 1, 33)
 material = SubResource("StandardMaterial3D_8htvv")
 
-[node name="Buttons" type="Node3D" parent="World"]
+[node name="ButtonsTests" type="Node3D" parent="World"]
 
-[node name="PushButton" parent="World/Buttons" instance=ExtResource("5_2jkuc")]
+[node name="PushButton" parent="World/ButtonsTests" instance=ExtResource("5_2jkuc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.979, 1, 1)
 
-[node name="PushButton2" parent="World/Buttons" instance=ExtResource("5_2jkuc")]
+[node name="PushButton2" parent="World/ButtonsTests" instance=ExtResource("5_2jkuc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.55926, 1.59723, -0.394702)
 
-[node name="PushButton3" parent="World/Buttons" instance=ExtResource("5_2jkuc")]
+[node name="PushButton3" parent="World/ButtonsTests" instance=ExtResource("5_2jkuc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.215079, 0.652896, 1.62115)
 
-[node name="RigidBody3D" type="RigidBody3D" parent="World"]
+[node name="PushableRock" type="RigidBody3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.44489, 1.35178, 0)
 
-[node name="Rock" type="MeshInstance3D" parent="World/RigidBody3D"]
+[node name="Rock" type="MeshInstance3D" parent="World/PushableRock"]
 mesh = ExtResource("6_8xj7s")
 skeleton = NodePath("../../..")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="World/RigidBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/PushableRock"]
 shape = SubResource("BoxShape3D_yqnac")
 
 [node name="PointHoldingCell" type="Node3D" parent="World"]
@@ -166,3 +183,16 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.
 [node name="Points" type="Node3D" parent="World/PointHoldingCell"]
 
 [node name="ReplusionPoint" parent="World/PointHoldingCell/Points" instance=ExtResource("9_cmswh")]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.92382, 1.32108, -1.4502)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("SphereShape3D_2fc2v")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="RigidBody3D"]
+material = SubResource("StandardMaterial3D_t61vt")
+
+[node name="Plants" type="Node3D" parent="."]
+
+[node name="Leaf" type="MeshInstance3D" parent="Plants"]
