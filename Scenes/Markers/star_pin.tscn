@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://bt8ru815uvecg"]
+
+[ext_resource type="PackedScene" uid="uid://cwjrtbafytgjg" path="res://Blender/StarPin/StarPin.blend" id="1_xir7e"]
+
+[node name="StarPin" instance=ExtResource("1_xir7e")]

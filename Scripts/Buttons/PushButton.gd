@@ -10,7 +10,7 @@ func _ready():
 	push_node = get_node("Push")
 	original_material = push_node.material
 	red_material = StandardMaterial3D.new()
-	red_material.albedo_color = Color(1, 0, 0)
+	red_material.albedo_color = Color(1.5, 0, 0)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

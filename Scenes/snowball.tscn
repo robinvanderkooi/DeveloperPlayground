@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://bhtf45xajiuum"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_2fc2v"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_sh5bm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t61vt"]
+normal_enabled = true
+rim_enabled = true
+rim = 0.07
+rim_tint = 0.53
+rim_texture = SubResource("ImageTexture_sh5bm")
+subsurf_scatter_enabled = true
+subsurf_scatter_strength = 0.33
+refraction_enabled = true
+
+[node name="Snowball" type="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.78266, 1.15484, -6.43769)
+metadata/isGrabable = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_2fc2v")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+material = SubResource("StandardMaterial3D_t61vt")

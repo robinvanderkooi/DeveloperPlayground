@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bdbl43adtsq8p"]
+
+[ext_resource type="PackedScene" uid="uid://6xqh7c3gnqf6" path="res://Blender/Ghost/Ghost.blend" id="1_t5jse"]
+[ext_resource type="Material" uid="uid://cvewiw71lgekg" path="res://Materials/Ghost_White.tres" id="2_mh8wy"]
+[ext_resource type="Material" uid="uid://bxx5a1cn41lck" path="res://Materials/Ghost_Black.tres" id="3_i8ast"]
+
+[node name="Ghost" instance=ExtResource("1_t5jse")]
+
+[node name="Sheet" parent="." index="0"]
+material_override = ExtResource("2_mh8wy")
+transparency = 0.5
+
+[node name="EyesAndMouth" parent="." index="1"]
+material_override = ExtResource("3_i8ast")
+transparency = 0.25
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45202, 0)
+light_energy = 1.97
+light_indirect_energy = 1.485
+light_volumetric_fog_energy = 4.071
+light_specular = 1.631
+omni_range = 3.0
+omni_attenuation = 0.143587

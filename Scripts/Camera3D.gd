@@ -1,7 +1,7 @@
 extends Camera3D
 
 
-@export var lerp_speed = 10
+@export var lerp_speed = 15
 @export var target_path : NodePath = "../CharacterBody3D/Head"
 @export var offset = Vector3.BACK + Vector3.UP
 @export var offset_first = offset * 0.2
@@ -22,7 +22,8 @@ func _ready():
 		label_cam_mode = get_node("/root/MainScene/CanvasLayer/Label_MapMode")
 		character_node = get_node("../CharacterBody3D")
 		look_point_node = get_node("../CharacterBody3D/Head/LookPoint")
-
+	character_node.visible = false
+	cam_mode = CAM_MODES.FIRST
 
 func _physics_process(delta):
 	if !target:

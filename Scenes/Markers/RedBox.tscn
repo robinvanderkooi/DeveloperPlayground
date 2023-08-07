@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bocmvpem3rvvx"]
+
+[ext_resource type="Material" uid="uid://b055g6xfwim2l" path="res://Materials/Red.tres" id="1_cbb6c"]
+
+[node name="RedBox" type="CSGBox3D"]
+material = ExtResource("1_cbb6c")

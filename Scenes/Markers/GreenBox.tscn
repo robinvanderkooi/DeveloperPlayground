@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwf18vhsx5hr7"]
+
+[ext_resource type="Material" uid="uid://dnaiyvmdlo1fe" path="res://Materials/Green.tres" id="1_tcaeb"]
+
+[node name="GreenBox" type="CSGBox3D"]
+material = ExtResource("1_tcaeb")

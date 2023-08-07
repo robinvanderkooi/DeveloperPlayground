@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://v64lfgcjml8d"]
+
+[ext_resource type="Material" uid="uid://cp8poqgfm8tvu" path="res://Materials/Blue.tres" id="1_fnbub"]
+
+[node name="BlueBox" type="CSGBox3D"]
+material = ExtResource("1_fnbub")

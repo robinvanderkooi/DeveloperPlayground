@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cvewiw71lgekg"]
+
+[resource]
+cull_mode = 2
+shading_mode = 0
+albedo_color = Color(1.5, 1.5, 1.5, 1)
+refraction_scale = 0.15
+detail_enabled = true
+detail_blend_mode = 1
+disable_receive_shadows = true
+shadow_to_opacity = true
+billboard_mode = 1
+grow_amount = 1.0

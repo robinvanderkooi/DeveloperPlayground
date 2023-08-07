@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtoe036iy0ea0"]
+
+[ext_resource type="Script" path="res://Scenes/Tiles/Tile_Grass.gd" id="1_wxh75"]
+
+[node name="Tile_Grass" type="Node3D"]
+script = ExtResource("1_wxh75")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+polygon = PackedVector2Array(-0.815, 0.1, -0.38, 0.7, 0.48, 0.72, 0.925, 0, 0.46, -0.705, -0.505, -0.635)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.5, 0)
