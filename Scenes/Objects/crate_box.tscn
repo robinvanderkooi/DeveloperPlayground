@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dalwcovhk5882"]
+
+[ext_resource type="PackedScene" uid="uid://b4vdat0choyp5" path="res://Blender/CrateBox/CrateBox.blend" id="1_i0ja1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rdvig"]
+
+[node name="crate_box" type="RigidBody3D"]
+metadata/isGrabable = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0)
+shape = SubResource("BoxShape3D_rdvig")
+
+[node name="CrateBox" parent="." instance=ExtResource("1_i0ja1")]
+transform = Transform3D(0.45, 0, 0, 0, 0.45, 0, 0, 0, 0.45, 0, 0, 0)

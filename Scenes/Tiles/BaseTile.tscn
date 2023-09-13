@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://3kgnud6yyeba"]
+
+[ext_resource type="Script" path="res://Scenes/Tiles/BaseTile.gd" id="1_aqppx"]
+
+[node name="BaseTile" type="StaticBody3D"]
+script = ExtResource("1_aqppx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="."]

@@ -16,7 +16,6 @@ func _process(delta):
 	
 	
 func PushButtonFunction():
-	print("Pushed!!")
 	var instance = point_scene.instantiate()
 	instance.position = starting_point_position + Vector3(rng.randf_range(-0.1, 0.1),rng.randf_range(-0.1, 0.1),rng.randf_range(-0.1, 0.1))
 	points_node.add_child(instance)

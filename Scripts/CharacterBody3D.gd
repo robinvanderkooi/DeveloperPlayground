@@ -50,7 +50,7 @@ func _physics_process(delta):
 		
 		#Dampen the grabbed objects velocity
 		grabbed.linear_velocity *= 0.8
-		grabbed.angular_velocity *= 0.8
+		grabbed.angular_velocity *= 0.98
 
 #		var newLocation = (grabbed_location + grabbed.position) / 2.0
 #		grabbed.position = newLocation
@@ -71,7 +71,6 @@ func _input(event):
 		unshoot()
 
 func shoot():
-	print("shoot")
 	var space = get_world_3d().direct_space_state
 	var query = PhysicsRayQueryParameters3D.create(camera_node.global_position,
 			camera_node.global_position - camera_node.global_transform.basis.z * 100)
@@ -92,6 +91,7 @@ func shoot():
 			camera_node.add_child(instance_camera)
 			instance_camera.position = instance_camera.to_local(collision.collider.position)
 			instance_camera.set_scale(Vector3(0.2,0.2,0.2))
+			instance_camera.get_node("Cube").visible = false # change visibility
 			starpin_instance_camera = instance_camera
 			
 			#add to World
@@ -99,6 +99,7 @@ func shoot():
 			get_node("/root").add_child(instance_global)
 			instance_global.position = collision.collider.position
 			instance_global.set_scale(Vector3(0.2,0.2,0.2))
+			instance_global.get_node("Cube").visible = false # change visibility
 			starpin_instance_global = instance_global
 			
 			#grabbed_location = collision.position #might be shared, watch out for that.
@@ -107,7 +108,6 @@ func shoot():
 
 func unshoot():
 	if grabbed != null:
-		print("unshoot")
 		grabbed.apply_force(Vector3.UP)
 		grabbed = null
 		camera_node.remove_child(starpin_instance_camera)
